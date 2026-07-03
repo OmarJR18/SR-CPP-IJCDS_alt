@@ -29,14 +29,16 @@ Ordenadas de menor a mayor complejidad/tiempo estimado.
 
 **Observacion:** "The results section should include statistical significance analysis (e.g., paired t-test, Wilcoxon signed-rank test, or Friedman/Nemenyi tests) to demonstrate that the reported improvements are statistically significant."
 
-**Solucion:** Ya existe ANOVA en el notebook. Agregar:
+**Solucion:** Ya existe ANOVA en el notebook. Se extendio el analisis para cubrir tambien las metricas estructurales del arbol:
 - **Friedman test** (non-parametric, comparacion de multiples metodos)
 - **Nemenyi test** (post-hoc, que pares de metodos difieren significativamente)
-- **Wilcoxon signed-rank test** (par por par, SR-CCP vs cada metodo)
+- **Wilcoxon signed-rank test** (par por par, SR-CCP/CCP_Modified vs cada metodo)
+- **Paired t-test** con correccion de Holm
 
 **Implementacion:**
 - Usar `scipy.stats.friedmanchisquare`
-- Generar tabla de p-values
+- Generar tablas de p-values para accuracy y para `Leaves`, `Nodes`, `Depth` y `n_Features`
+- Guardar el resumen estructural en `FINAL_RESULTADOS_structural_significance.csv`
 
 **Dependencias nuevas:** Ninguna (scipy ya instalado)
 **Dificultad:** Baja-Media
