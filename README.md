@@ -23,7 +23,7 @@ reportado en el paper**
 | 2 | **Obs 11** — Análisis de significancia estadística | Implementado | Friedman, Nemenyi CD, Wilcoxon (Holm), t-test (Holm) para accuracy y métricas estructurales | Baja-Media | 45 min |
 | 3 | **Obs 14** — Estudio de ablación | Implementado | SR-CCP, No Depth, No Feature, No Penalties. YA ESTÁ HECHO, LOS RESULTADOS ESTÁN EN 'ablation_estudy/' | Media | 1 hora |
 | 4 | **Obs 21** — Análisis de sensibilidad de parámetros | Pendiente | Variar λd y λf, graficar efecto | Media | 1.5 horas |
-| 5 | **Obs 12** — Comparaciones con métodos adicionales | Pendiente | HSTreeClassifier (imodels), XGBClassifier (xgboost) | Media-Alta | 2 horas |
+| 5 | **Obs 12** — Comparaciones con métodos adicionales | Parcialmente implementado | XGBClassifier (xgboost) añadido. HSTreeClassifier (imodels) pendiente | Media-Alta | 2 horas |
 
 ### Obs 22 — Comparación de eficiencia computacional
 Medición de `training_time`, `pruning_time`, `inference_time` y `memory_usage` para cada método. Implementado en Cell 3 (funciones `train_*`) y Cell 6 (tabla de resultados).
@@ -38,4 +38,4 @@ Friedman test, Nemenyi CD diagram, Wilcoxon signed-rank (Holm corrected) y paire
 Variar λd (depth_penalty) y λf (feature_penalty_weight) independientemente y graficar efecto sobre complejidad del árbol y rendimiento. **Pendiente.**
 
 ### Obs 12 — Comparaciones con métodos adicionales
-Agregar HSTreeClassifier (imodels) y XGBClassifier (xgboost) como comparadores adicionales. **Pendiente.**
+XGBClassifier (xgboost) añadido en Cell 3 (`train_xgboost`, con Optuna tuneando `max_depth`, `gamma`, `reg_alpha`, `reg_lambda`, `subsample`, `colsample_bytree` + early stopping) y registrado en `model_fns`. Las métricas estructurales (`depth`, `nodes`, `leaves`, `n_features_used`) se generalizaron en `get_tree_structure_metrics` para soportar ensambles boosted además de árboles únicos. HSTreeClassifier (imodels) sigue **Pendiente.**
