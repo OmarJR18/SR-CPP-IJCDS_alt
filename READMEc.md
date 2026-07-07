@@ -48,7 +48,7 @@ Hyperparameters `λd` (depth_penalty) and `λf` (feature_penalty_weight) are tun
 - **Dramatically simpler trees** — e.g., SpamBase: 477.8 nodes (Base) → 141.8 (CCP) → 11.8 (SR-CCP); depth from 29 to 4.6
 - **Competitive accuracy** — SR-CCP matches/exceeds CCP accuracy on most datasets while using 80-95% fewer nodes
 - **Ablation** — Both depth and feature penalties contribute independently; full SR-CCP yields the best structural simplification
-- **Statistical significance** — Confirmed via Friedman + Nemenyi CD tests, Wilcoxon signed-rank (Holm), and paired t-test (Holm)
+- **Statistical significance** — Confirmed via Friedman + Nemenyi CD tests, Wilcoxon signed-rank (Benjamini-Hochberg/FDR), and paired t-test (Benjamini-Hochberg/FDR)
 
 ## Reviewer Observations & Implementation Status
 
@@ -66,7 +66,7 @@ The journal reviewers provided 24 observations. Below is the status of each:
 | 8 | Expand mathematical formulation with clearer explanation of objective function and each regularization parameter | Pending | |
 | 9 | Detail hyperparameter optimization (Bayesian settings, search iterations, convergence, cost) | Pending | |
 | 10 | Complete implementation details (libraries, hardware, seeds, reproducibility) | Pending | |
-| **11** | **Statistical significance analysis (Friedman/Nemenyi, Wilcoxon, t-test)** | **Implemented** | Friedman, Nemenyi CD, Wilcoxon (Holm), paired t-test (Holm) for accuracy & structural metrics. See Cell 7. |
+| **11** | **Statistical significance analysis (Friedman/Nemenyi, Wilcoxon, t-test)** | **Implemented** | Friedman, Nemenyi CD, Wilcoxon (Benjamini-Hochberg/FDR), paired t-test (Benjamini-Hochberg/FDR) for accuracy & structural metrics. See Cell 7. |
 | **12** | **Additional comparisons with recent interpretable tree algorithms** | **Partially Implemented** | XGBClassifier (Optuna-tuned gamma/reg_alpha/reg_lambda + early stopping) added, see Cell 3 (`train_xgboost`). HSTreeClassifier (imodels) still pending |
 | 13 | Deeper discussion of trade-offs (performance vs simplicity vs features vs inference) | Pending | |
 | **14** | **Ablation study for depth penalty and feature penalty components** | **Implemented** | 4 configurations: Full SR-CCP, No Depth, No Feature, No Penalties. See Cell 4 & `ablation_study/`. |

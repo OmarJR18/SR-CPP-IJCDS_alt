@@ -33,7 +33,7 @@ Ordenadas de menor a mayor complejidad/tiempo estimado.
 - **Friedman test** (non-parametric, comparacion de multiples metodos)
 - **Nemenyi test** (post-hoc, que pares de metodos difieren significativamente)
 - **Wilcoxon signed-rank test** (par por par, SR-CCP/CCP_Modified vs cada metodo)
-- **Paired t-test** con correccion de Holm
+- **Paired t-test** con correccion de Benjamini-Hochberg (FDR)
 
 **Implementacion:**
 - Usar `scipy.stats.friedmanchisquare`
